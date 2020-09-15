@@ -20,8 +20,12 @@
       </div>
       <div class="right"
            v-if="!item.purchased">
-        <button >
-          Купить
+        <MinLoader v-if="loader"/>
+        <button v-else
+                @click.prevent="addCart"
+                v-bind:class="{ active: itemInCard }"
+                :disabled="itemInCard">
+          {{itemInCard? 'В корзине': 'Купить'}}
         </button>
       </div>
       <h4 v-else>
@@ -34,6 +38,7 @@
 .art-item{
   max-width: 280px;
   min-height: 334px;
+  max-height: 334px;
   display: flex;
   flex-direction: column;
   border: 1px solid #E1E1E1;
@@ -79,7 +84,40 @@
 </style>
 <script>
 export default {
-  props: ['item']
-
+  data: () => ({
+    cardUser: [],
+    itemInCard: false,
+    loader: false
+  }),
+  props: ['item'],
+  mounted() {
+    if(localStorage.getItem('cardUser')){
+      this.cardUser = JSON.parse(localStorage.cardUser)
+      this.checkCard()
+    }
+  },
+  methods: {
+    async addCart() {
+      this.loader = true
+      const url = 'https://jsonplaceholder.typicode.com/posts/1';
+      await fetch(url)
+        .then( res => {
+          this.addLocalStorage()
+          this.loader = false
+        })
+        .catch( res => console.log('error'))
+    },
+    checkCard() {
+      const el = this.cardUser.find(el => el.id === this.item.id)
+      if(el !== undefined){
+        this.itemInCard = true
+      }
+    },
+    addLocalStorage(){
+        this.cardUser.push(this.item)
+        this.itemInCard = true
+        localStorage.setItem('cardUser', JSON.stringify(this.cardUser))
+    }
+  }
 }
 </script>

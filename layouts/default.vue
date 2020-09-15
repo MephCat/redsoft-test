@@ -104,7 +104,10 @@ html {
       outline: none;
     }
     &.active{
-
+      background: #5B3A32;
+      &:disabled{
+        background: #5B3A32;
+      }
     }
   }
   input[type=text]{
