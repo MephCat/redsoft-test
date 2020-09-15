@@ -1,0 +1,38 @@
+{
+  "ArtItem": {
+    "description": "Auto imported from components/ArtItem.vue"
+  },
+  "LazyArtItem": {
+    "description": "Auto imported from components/ArtItem.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "LazyFooter": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "LazyHeader": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "LazyLogo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "MinLoader": {
+    "description": "Auto imported from components/MinLoader.vue"
+  },
+  "LazyMinLoader": {
+    "description": "Auto imported from components/MinLoader.vue"
+  },
+  "Navigation": {
+    "description": "Auto imported from components/Navigation.vue"
+  },
+  "LazyNavigation": {
+    "description": "Auto imported from components/Navigation.vue"
+  }
+}
