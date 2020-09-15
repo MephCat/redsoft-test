@@ -81,6 +81,9 @@ html {
   a{
     text-decoration: none;
   }
+  .through-text{
+    text-decoration: line-through;
+  }
   button{
     min-width: 118px;
     text-align: center;
@@ -165,6 +168,12 @@ html {
   .container-page{
     min-height: calc(100vh - 202px);
     padding-top: 45px;
+    .art-list{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
   }
 }
 
