@@ -34,8 +34,7 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [
-  ],
+  plugins: [],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -57,6 +56,22 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    vendor: ['babel-polyfill']
+    vendor: ['babel-polyfill'],
+    options:  {
+      presets: ['@babel/preset-env',[ '@nuxtjs/babel-preset-app', {
+        targets: { ie: 11 }
+      }
+        ]],
+      plugins: ['@babel/plugin-transform-runtime',
+                "babel-plugin-transform-es2015-arrow-functions",
+                "@babel/plugin-transform-strict-mode",
+                  ["transform-strict-mode", {
+                    "strict": false
+                  }]
+      ],
+      blacklist: ["useStrict"],
+      strictMode: false
+    }
+
   }
 }

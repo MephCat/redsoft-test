@@ -36,17 +36,19 @@
 </template>
 <style lang="scss">
 .art-item{
+  width: 280px;
   max-width: 280px;
+  min-width: 280px;
   min-height: 334px;
   max-height: 334px;
-  display: flex;
-  flex-direction: column;
+  display: block;
   border: 1px solid #E1E1E1;
   margin: 39px 10px;
   &.purchased{
     opacity: .5;
   }
   .top{
+    width: 100%;
     padding: 0;
     height: 160px;
     img{
@@ -100,12 +102,11 @@ export default {
     async addCart() {
       this.loader = true
       const url = 'https://jsonplaceholder.typicode.com/posts/1';
-      await fetch(url)
-        .then( res => {
+      const response = await this.$axios.get(url)
+      if(response.status === 200){
           this.addLocalStorage()
           this.loader = false
-        })
-        .catch( res => console.log('error'))
+      }
     },
     checkCard() {
       const el = this.cardUser.find(el => el.id === this.item.id)
